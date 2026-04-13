@@ -3,16 +3,23 @@
 set -ouex pipefail
 
 ### Hide Plasma sessions from SDDM (only Hyprland visible)
+rm -f /usr/share/wayland-sessions/plasma.desktop
 rm -f /usr/share/wayland-sessions/plasmawayland.desktop
 rm -f /usr/share/wayland-sessions/plasmawayland6.desktop
 rm -f /usr/share/xsessions/plasma.desktop
+rm -f /usr/share/xsessions/plasmax11.desktop
 
-### SDDM: set Hyprland as default session
+### SDDM: set Hyprland as default session and clear remembered session state
 mkdir -p /etc/sddm.conf.d
 cat > /etc/sddm.conf.d/hyprland.conf << 'EOF'
 [General]
-DefaultSession=hyprland
+DefaultSession=hyprland.desktop
+[Autologin]
+Session=hyprland.desktop
 EOF
+
+# Clear any persisted last-session state so SDDM uses the default above
+rm -f /var/lib/sddm/.config/sddm/state.conf
 
 ### Hyprland COPR (latest packages)
 dnf5 -y copr enable solopasha/hyprland
