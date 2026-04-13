@@ -1,0 +1,76 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 32,
+    "spacing": 4,
+    "margin-top": 4,
+    "margin-left": 8,
+    "margin-right": 8,
+
+    "modules-left":   ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right":  ["gamemode", "pulseaudio", "network", "bluetooth", "tray"],
+
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "on-click": "activate",
+        "sort-by-number": true,
+        "active-only": false
+    },
+
+    "hyprland/window": {
+        "max-length": 60,
+        "separate-outputs": true,
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "Firefox: $1",
+            "(.*) - fish": "fish: $1"
+        }
+    },
+
+    "clock": {
+        "format": "{:%H:%M   %a %d %b %Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "gamemode": {
+        "format": "GAME",
+        "format-alt": "GAME ({count})",
+        "hide-not-running": true,
+        "use-icon": false,
+        "tooltip": true,
+        "tooltip-format": "Gamemode active: {count} app(s)"
+    },
+
+    "pulseaudio": {
+        "format": "Vol {volume}%",
+        "format-muted": "Vol X",
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pamixer -i 5",
+        "on-scroll-down": "pamixer -d 5",
+        "scroll-step": 5,
+        "tooltip-format": "{desc} — {volume}%"
+    },
+
+    "network": {
+        "format-wifi":       "Net {essid}",
+        "format-ethernet":   "Net ETH",
+        "format-disconnected": "Net --",
+        "tooltip-format-wifi":     "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
+        "tooltip-format-ethernet": "{ifname}\n{ipaddr}/{cidr}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "bluetooth": {
+        "format":           "BT",
+        "format-disabled":  "",
+        "format-connected": "BT {device_alias}",
+        "tooltip-format-connected":           "Connected: {device_alias}",
+        "tooltip-format-enumerate-connected": "{device_alias}",
+        "on-click": "blueman-manager"
+    },
+
+    "tray": {
+        "spacing": 8,
+        "icon-size": 18
+    }
+}

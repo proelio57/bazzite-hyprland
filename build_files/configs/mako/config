@@ -1,0 +1,39 @@
+# Mako notification daemon
+
+# Position
+anchor=top-right
+margin=8,8,0,0
+
+# Size & appearance
+width=360
+height=120
+border-size=2
+border-radius=8
+padding=12,14
+
+# Colors
+background-color=#12121cdd
+text-color=#cdd6f4
+border-color=#33ccff55
+
+# Behavior
+default-timeout=5000
+ignore-timeout=0
+max-visible=5
+
+# Urgency: low
+[urgency=low]
+background-color=#12121caa
+border-color=#44444466
+default-timeout=3000
+
+# Urgency: normal
+[urgency=normal]
+background-color=#12121cdd
+border-color=#33ccff55
+
+# Urgency: critical (no timeout)
+[urgency=critical]
+background-color=#2a0a0add
+border-color=#ff6464cc
+default-timeout=0
